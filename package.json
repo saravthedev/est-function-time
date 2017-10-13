@@ -2,7 +2,7 @@
   "name": "est-function-time",
   "version": "1.0.1",
   "description": "A module to estimate time take by a code",
-  "homepage":"https://github.com/saravthedev/est-function-time.git#readme",
+  "homepage":"https://github.com/saravthedev/est-function-time#readme",
   "repository" :
   { "type" : "git"
   , "url" : "https://github.com/saravthedev/est-function-time.git"
