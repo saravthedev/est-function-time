@@ -1,11 +1,11 @@
 {
-  "name": "est-function-time",
-  "version": "1.0.1",
+  "name": "estimate-function-time",
+  "version": "1.0.0",
   "description": "A module to estimate time take by a code",
-  "homepage":"https://github.com/saravthedev/est-function-time#readme",
-  "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/saravthedev/est-function-time.git"
+  "homepage": "https://github.com/saravthedev/est-function-time#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saravthedev/est-function-time.git"
   },
   "main": "index.js",
   "dependencies": {
@@ -22,5 +22,8 @@
     "time"
   ],
   "author": "Saravanan K",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/saravthedev/est-function-time/issues"
+  }
 }

@@ -1,5 +1,5 @@
 "# est-function-time" 
-var pdd = require('est-function-time');
+var pdd = require('estimate-function-time');
 var asycn = require('async'); //optional
 
 // addPoint takes key optional, if key not present it take a default key
