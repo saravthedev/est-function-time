@@ -1,6 +1,6 @@
 {
   "name": "estimate-function-time",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A module to estimate time take by a code",
   "homepage": "https://github.com/saravthedev/est-function-time#readme",
   "repository": {
