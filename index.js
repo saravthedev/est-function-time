@@ -5,17 +5,18 @@ module.exports = function () {
         var timeStampList = [];
         var startPoint;
         var endPoint;
-        this.addStartPoint = function (key) {
-            var output = this.addPoint(key);
+        var myObj = {};
+        myObj.addStartPoint = function (key) {
+            var output = myObj.addPoint(key);
             startPoint = output;
             return output;
         };
-        this.addEndPoint = function (key) {
-            var output = this.addPoint(key);
+        myObj.addEndPoint = function (key) {
+            var output = myObj.addPoint(key);
             endPoint = output;
             return output;
         };
-        this.addPoint = function (key) {
+        myObj.addPoint = function (key) {
             var thisTime = moment();
             if (!key) {
                 key = "Stage " + keysList.length;
@@ -24,7 +25,7 @@ module.exports = function () {
             timeStampList.push(thisTime);
             return { 'key': key, 'moment': thisTime };
         }
-        this.getList = function () {
+        myObj.getList = function () {
             var ret = [];
             var max = { 'index': 0, 'amount': 0 }, min = { 'index': 0, 'amount': 0 };
             for (i = 1; i < keysList.length; i++) {
@@ -62,7 +63,7 @@ module.exports = function () {
             }
             return ret;
         }
-        return this;
+        return myObj;
     })();
     return myModule;
 };
