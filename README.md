@@ -6,7 +6,7 @@ est-function-time is to estimate time taken by the code. you can add points at a
 
 ```
 var eft = require('est-function-time');
-var checkSet = eft();
+var checkSet = new eft();
 asycn.series([
 	function(callback) {
 		checkSet.addStartPoint('stage one');
