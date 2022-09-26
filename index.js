@@ -27,7 +27,8 @@ module.exports = function () {
         }
         myObj.getList = function () {
             var ret = [];
-            var max = { 'index': 0, 'amount': 0 }, min = { 'index': 0, 'amount': 0 };
+            var max = { 'index': 0, 'amount': -1 };
+            var min = { 'index': 0, 'amount': 'NONE' };
             for (i = 1; i < keysList.length; i++) {
                 var diff = timeStampList[i] - timeStampList[i - 1];
                 var str = [
@@ -38,11 +39,12 @@ module.exports = function () {
                     diff
                 ].join("");
                 ret.push(str);
+                console.log(diff,min.amount);
                 if (diff > max.amount) {
                     max.amount = diff;
                     max.index = ret.length - 1;
                 }
-                if (diff < min.amount) {
+                if (min.amount == 'NONE' || diff < min.amount) {
                     min.amount = diff;
                     min.index = ret.length - 1;
                 }
