@@ -1,71 +1,68 @@
-var moment = require('moment');
-module.exports = function () {
-    var myModule = (function (key) {
-        var keysList = [];
-        var timeStampList = [];
-        var startPoint;
-        var endPoint;
-        var myObj = {};
-        myObj.addStartPoint = function (key) {
-            var output = myObj.addPoint(key);
-            startPoint = output;
-            return output;
-        };
-        myObj.addEndPoint = function (key) {
-            var output = myObj.addPoint(key);
-            endPoint = output;
-            return output;
-        };
-        myObj.addPoint = function (key) {
-            var thisTime = moment();
-            if (!key) {
-                key = "Stage " + keysList.length;
-            }
-            keysList.push(key);
-            timeStampList.push(thisTime);
-            return { 'key': key, 'moment': thisTime };
+const moment = require('moment');
+class estimateTime {
+    constructor() {
+        this.keysList = [];
+        this.timeStampList = [];
+        this.startPoint;
+        this.endPoint;
+    }
+    addStartPoint = function (key) {
+        let output = this.addPoint(key);
+        this.startPoint = output;
+        return output;
+    }
+    addEndPoint = function (key) {
+        let output = this.addPoint(key);
+        this.endPoint = output;
+        return output;
+    };
+    addPoint = function (key) {
+        let thisTime = moment();
+        if (!key) {
+            key = "Stage " + this.keysList.length;
         }
-        myObj.getList = function () {
-            var ret = [];
-            var max = { 'index': 0, 'amount': -1 };
-            var min = { 'index': 0, 'amount': 'NONE' };
-            for (i = 1; i < keysList.length; i++) {
-                var diff = timeStampList[i] - timeStampList[i - 1];
-                var str = [
-                    keysList[i - 1],
-                    ' ----> ',
-                    keysList[i],
-                    '  ',
-                    diff
-                ].join("");
-                ret.push(str);
-                console.log(diff,min.amount);
-                if (diff > max.amount) {
-                    max.amount = diff;
-                    max.index = ret.length - 1;
-                }
-                if (min.amount == 'NONE' || diff < min.amount) {
-                    min.amount = diff;
-                    min.index = ret.length - 1;
-                }
+        this.keysList.push(key);
+        this.timeStampList.push(thisTime);
+        return { 'key': key, 'moment': thisTime };
+    }
+    getList = function () {
+        let ret = [];
+        let max = { 'index': 0, 'amount': -1 };
+        let min = { 'index': 0, 'amount': 'NONE' };
+        for (let i = 1; i < this.keysList.length; i++) {
+            let diff = this.timeStampList[i] - this.timeStampList[i - 1];
+            let str = [
+                this.keysList[i - 1],
+                ' ----> ',
+                this.keysList[i],
+                '  ',
+                diff
+            ].join("");
+            ret.push(str);
+            if (diff > max.amount) {
+                max.amount = diff;
+                max.index = ret.length - 1;
             }
-            ret[max.index] += "  max";
-            ret[min.index] += "  min";
-            if(startPoint && endPoint) {
-                var diff = endPoint.moment - startPoint.moment;
-                var str = [
-                    'Total Time  : ',
-                    startPoint.key,
-                    ' ----> ',
-                    endPoint.key,
-                    '  ',
-                    diff
-                ].join("");
-                ret.push(str);
+            if (min.amount == 'NONE' || diff < min.amount) {
+                min.amount = diff;
+                min.index = ret.length - 1;
             }
-            return ret;
         }
-        return myObj;
-    })();
-    return myModule;
-};
+        ret[max.index] += "  max";
+        ret[min.index] += "  min";
+        if (this.startPoint && this.endPoint) {
+            let diff = this.endPoint.moment - this.startPoint.moment;
+            let str = [
+                'Total Time  : ',
+                this.startPoint.key,
+                ' ----> ',
+                this.endPoint.key,
+                '  ',
+                diff
+            ].join("");
+            ret.push(str);
+        }
+        return ret;
+    }
+}
+module.exports = estimateTime;
